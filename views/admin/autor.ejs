@@ -1,0 +1,20 @@
+<%- include('../commons/header')  %>
+<%- include('../commons/menu')  %>
+
+<div class="container">
+    <h1>Autor</h1>
+    <form class="form-horizontal" method="POST" action="/admin/autores/<%=autor._id%>">
+        <%- include('formautor')%>
+        <div class="form-group">
+            <div class="col-sm-10 col-sm-col-xs-offset-2">
+                <button type="submit" class="btn btn-primary">alterar</button>
+                <a class="btn btn-default" href="/admin/autores">Cancelar</a>
+                <a class="btn btn-danger" href="/admin/autores/<%=autor._id%>/excluir">excluir</a>
+            </div> 
+        </div>
+    </form>
+
+    
+</div>
+
+<%- include('../commons/footer')  %>
