@@ -11,6 +11,10 @@ autoresRouter.use((req, res, next)=>{
         res.redirect('/');
         return;
     }
+    if(req.app.get('usuario').id != null && req.app.get('usuario').admin === false){
+        res.redirect('/admin/artigos');
+        return;
+    }
     next();
 });
 
@@ -41,6 +45,12 @@ autoresRouter.get('/', (req, res) => {
 autoresRouter.get('/:id', (req, res) => {
     AutorModel.findById(req.params.id, (erro, autor) => {
         res.render('admin/autor', { autor: autor, usuario: req.app.get('usuario') });
+    });
+});
+
+autoresRouter.get('/:id/excluir', (req, res) => {
+    AutorModel.remove({_id: req.params.id}, (erro)=>{
+        res.render('admin/autorexcluido', {usuario: req.app.get('usuario')});
     });
 });
 

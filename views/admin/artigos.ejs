@@ -1,0 +1,33 @@
+<%- include('../commons/header')  %>
+<%- include('../commons/menu')  %>
+
+<div class="container">
+     <h1>Artigos</h1>
+    <p><a href="/admin/artigos/novo" class="btn btn-primary">Novo</a></p>
+    <table class="table table-striped">
+        <thead>
+            <th>Titulo</th>
+            <th>Autor</th>
+            <th>Criado em</th>
+            <th>Atualizado em</th>
+            <th></th>
+        </thead>
+        <tbody id="tabela">
+            <% artigos.forEach((artigo) => {%>
+                <tr>
+                    <td><%= artigo.titulo %></td>
+                    <td><%=artigo.autor.name%></td>
+                    <td><%= artigo.criado.toLocaleString() %></td>
+                    <td><%= artigo.atualizado.toLocaleString() %></td>
+                    <td>
+                        <a href="/admin/artigos/<%=artigo._id%>" class="btn btn-info">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </a> 
+                    </td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</div>
+
+<%- include('../commons/footer')  %>
