@@ -1,8 +1,10 @@
+//continuar lista de autores
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const urlEncodedParser = bodyParser.urlencoded({ extended: false});
 const mongoose = require('mongoose');
+const ArtigoModel = require('./models/artigoModel');
 mongoose.connect('mongodb://localhost:27017/blog', { useNewUrlParser: true });
 const AutorModel = require('./models/autorModel');
 
@@ -23,13 +25,23 @@ app.get('/', (req, res)=> {
 
 
 app.get('/articles', (req, res) => {
-    res.render('articles', {usuario: app.get('usuario') } );
+    const artigos = ArtigoModel.find(null, null, { sort: { criado: -1 } }, (erro, artigos) =>{
+        if(erro) return console.error(erro);
+        res.render('articles', {artigos: artigos, usuario: app.get('usuario') } );;
+    });
+    
 });
 
 app.get('/login', (req, res)=> {
     res.render('login', {usuario: app.get('usuario') } );
 });
 
+app.get('/artigo/:id',(req, res)=>{
+    const artigo = ArtigoModel.findById(req.params.id, (erro, artigo)=>{
+       if(erro) return console.error(error);
+       res.render('artigo', {artigo: artigo, usuario: app.get('usuario') } );
+    });
+} );
 app.post('/login', urlEncodedParser, (req, res)=> {
     AutorModel.findOne({email: req.body.email}, (erro, autor) => {
        if(erro) return console.error(erro);

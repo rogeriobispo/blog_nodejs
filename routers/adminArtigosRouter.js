@@ -39,7 +39,12 @@ artigosRouter.post('/novo', urlEncodedParser, (req, res) => {
 });
 
 artigosRouter.get('/', (req, res) => {
-    const artigos = ArtigoModel.find(null, null, { sort: { criado: -1 } }, (erro, artigos) =>{
+    const usuario = req.app.get('usuario');
+    let filtro=null;
+    if(!usuario.admin){
+        filtro = {'autor.id': usuario.id};
+    }
+    const artigos = ArtigoModel.find(filtro, null, { sort: { criado: -1 } }, (erro, artigos) =>{
         if(erro) return console.error(erro);
         res.render('admin/artigos', { 'artigos': artigos, usuario: req.app.get('usuario') });
     });

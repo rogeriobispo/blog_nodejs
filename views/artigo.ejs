@@ -1,0 +1,63 @@
+<%- include('commons/header')  %>
+<%- include('commons/menu')  %>
+   
+
+<div class="container">
+
+    <p></p>
+    <h2><%=artigo.titulo%></h2>
+    <p class="lead">por <a href="#"><%=artigo.autor.name%></a></p>
+    <p><small><span class="glyphicon glyphicon-time"></span> Criado em <%=artigo.criado%></small></p>
+    <hr>
+        <div><%-artigo.texto%>
+    <hr>
+
+    <div class="well">
+        <h4>Deixe um comentário:</h4>
+        <form role="form">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Nome"></textarea>
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" rows="3" placeholder="Comentário"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+    </div>
+
+    <div style="margin-top: 2em">
+        <div style="position: absolute; font-size:xx-large">
+            <span class="glyphicon glyphicon-user"></span>
+        </div>
+        <div style="margin-left: 3em">
+            <h4>José Silva</h4>
+            <p class="text-muted"><small>25 Agosto 2014 às 9:30:00</small></p>
+            
+            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum
+            in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue
+            felis in faucibus.</p>
+            <p>
+                <a href="#"><span class="glyphicon glyphicon-thumbs-up"></span></a> 12 &nbsp; 
+                <a href="#"><span class="glyphicon glyphicon-thumbs-down"></span></a> 3
+            </p>
+        </div>
+    </div>
+    <div style="margin-top: 2em">
+        <div style="position: absolute; font-size:xx-large">
+            <span class="glyphicon glyphicon-user"></span>
+        </div>
+        <div style="margin-left: 3em">
+            <h4>Maria Silva</h4>
+            <p class="text-muted"><small>25 Agosto 2014 às 9:30:00</small></p>
+            
+            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum
+            in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue
+            felis in faucibus.</p>
+            <p>
+                <a href="#"><span class="glyphicon glyphicon-thumbs-up"></span></a> 12 &nbsp; 
+                <a href="#"><span class="glyphicon glyphicon-thumbs-down"></span></a> 3
+            </p>
+        </div>
+    </div>
+</div> 
+<%- include('commons/footer')  %>
