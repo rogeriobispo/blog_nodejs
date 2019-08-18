@@ -24,40 +24,23 @@
             <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
     </div>
-
-    <div style="margin-top: 2em">
-        <div style="position: absolute; font-size:xx-large">
-            <span class="glyphicon glyphicon-user"></span>
+    <%# comentario = artigo.comentarios[0]%>
+     <% artigo.comentarios.forEach((comentario)=>{  %>
+        <div style="margin-top: 2em">
+            <div style="position: absolute; font-size:xx-large">
+                <span class="glyphicon glyphicon-user"></span>
+            </div>
+            <div style="margin-left: 3em">
+                <h4><%=comentario.nome%></h4>
+                <p class="text-muted"><small><%=formataData(comentario.data)%></small></p>
+                
+                <p><%=comentario.texto%></p></p>
+                    <span class="controlecurtir" id="curtir_<%=comentario._id%>" onclick="curtir('<%=artigo._id%>', '<%=comentario._id%>')"><span class="glyphicon glyphicon-thumbs-up"></span></span> <span id="curtidas_<%=comentario._id%>"><%=comentario.curtiu%></span> &nbsp; 
+                    <span class="controlecurtir" id="naocurtir_<%=comentario._id%>" onclick="naocurtir('<%=artigo._id%>', '<%=comentario._id%>')"><span class="glyphicon glyphicon-thumbs-down"></span></span> <span id="naocurtidas_<%=comentario._id%>"><%=comentario.naocurtiu%></span>
+                </p>
+            </div>
         </div>
-        <div style="margin-left: 3em">
-            <h4>José Silva</h4>
-            <p class="text-muted"><small>25 Agosto 2014 às 9:30:00</small></p>
-            
-            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum
-            in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue
-            felis in faucibus.</p>
-            <p>
-                <a href="#"><span class="glyphicon glyphicon-thumbs-up"></span></a> 12 &nbsp; 
-                <a href="#"><span class="glyphicon glyphicon-thumbs-down"></span></a> 3
-            </p>
-        </div>
-    </div>
-    <div style="margin-top: 2em">
-        <div style="position: absolute; font-size:xx-large">
-            <span class="glyphicon glyphicon-user"></span>
-        </div>
-        <div style="margin-left: 3em">
-            <h4>Maria Silva</h4>
-            <p class="text-muted"><small>25 Agosto 2014 às 9:30:00</small></p>
-            
-            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum
-            in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue
-            felis in faucibus.</p>
-            <p>
-                <a href="#"><span class="glyphicon glyphicon-thumbs-up"></span></a> 12 &nbsp; 
-                <a href="#"><span class="glyphicon glyphicon-thumbs-down"></span></a> 3
-            </p>
-        </div>
-    </div>
+     <%});%>
+   
 </div> 
 <%- include('commons/footer')  %>

@@ -12,7 +12,7 @@ const moment = require('moment');
 
 // funções 
 app.locals.formataData = function(data){
-   moment.locale('pt-, urlEncodedParserbr');
+   moment.locale('pt-br');
    return moment(data).format('LLLL'); 
 }
 //end funções

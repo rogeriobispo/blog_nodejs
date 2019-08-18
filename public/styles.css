@@ -13,3 +13,16 @@ footer {
     border-radius: 40px;
     opacity : 0.5
 }
+
+.controlecurtir{
+    cursor: pointer;
+}
+
+.glyphicon-thumb-up.marcado{
+    color: green;
+}
+
+
+.glyphicon-thumb-down.marcado{
+    color: red;
+}

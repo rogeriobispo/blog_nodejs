@@ -16,7 +16,7 @@ const artigoSchema = new Schema(
                nome: String,
                texto: String,
                data: {type: Date, default: Date.now},
-               curitu: {type: Number, default: 0},
+               curtiu: {type: Number, default: 0},
                naocurtiu: {type: Number, default: 0}
            }
        ]
