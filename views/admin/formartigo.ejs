@@ -34,7 +34,7 @@
     <label for="autor" class="col-sm-2 control-label">Criado em</label>
     <div class="col-sm-10">
         <p class="form-control-static"><%=
-            artigo.criado?artigo.criado.toLocaleString():''
+            artigo.criado?formataData(artigo.criado):''
             %></p>
         <input type="hidden" name="criado" value="<%=artigo.criado%>">
     </div>
@@ -44,7 +44,7 @@
     <label for="autor" class="col-sm-2 control-label">Atualizado em</label>
     <div class="col-sm-10">
         <p class="form-control-static"><%=
-            (artigo.atualizado)? artigo.atualizado.toLocaleString():''%></p>
+            (artigo.atualizado)? formataData(artigo.atualizado):''%></p>
     </div>
 </div>
 

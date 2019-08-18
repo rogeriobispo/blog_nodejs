@@ -1,0 +1,12 @@
+<%- include('commons/header')  %>
+<%- include('commons/menu')  %>
+
+<div class="container">
+    <h1>Atures</h1>
+    <ul>
+        <% autores.forEach((autor) => {%>
+            <li><a href="/articles/<%= autor._id %>"><%= autor.nome %></li>
+        <% }); %>
+    </ul>
+</div>
+<%- include('commons/footer')  %>

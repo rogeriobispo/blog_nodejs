@@ -6,20 +6,20 @@
 
     <p></p>
     <h2><%=artigo.titulo%></h2>
-    <p class="lead">por <a href="#"><%=artigo.autor.name%></a></p>
-    <p><small><span class="glyphicon glyphicon-time"></span> Criado em <%=artigo.criado%></small></p>
+    <p class="lead">por <a href="/articles/<%=artigo.autor.id%>"><%=formataData(artigo.autor.name)%></a></p>
+    <p><small><span class="glyphicon glyphicon-time"></span> Criado em <%=formataData(artigo.criado)%></small></p>
     <hr>
         <div><%-artigo.texto%>
     <hr>
 
     <div class="well">
         <h4>Deixe um comentário:</h4>
-        <form role="form">
+        <form role="form" method="POST" action="/artigo/<%=artigo._id%>/comentarios">
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Nome"></textarea>
+                <input type="text" class="form-control" name="nome" placeholder="Nome"></textarea>
             </div>
             <div class="form-group">
-                <textarea class="form-control" rows="3" placeholder="Comentário"></textarea>
+                <textarea class="form-control" name="comentario" rows="3" placeholder="Comentário"></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Enviar</button>
         </form>

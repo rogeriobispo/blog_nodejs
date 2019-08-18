@@ -2,15 +2,53 @@
 <%- include('commons/menu')  %>
 
 <div class="container">
-    <h1>Artigos</h1>
+    <h1>Artigos
+    <% if (filtro) { %>
+        de <%= filtro.nome %>
+    <% } %>
+    </h1>
+    <% let i = -1;
+       let conta = 0;
+    %>
 
-    <% artigos.forEach((artigo) => {%>
-        <h3><a href="/artigo/<%= artigo._id %>"><%= artigo.titulo %></a> <small>por <%=artigo.autor.name%></small></h3>
-        <p><small><%= artigo.criado.toLocaleString()%></small></p>
+    <% artigos.forEach((artigo) => {
+        i++;
+        if(i>=(parseInt(pagina)* parseInt(quantidade))){
+            if(conta<parseInt(quantidade)) {
+        
+    %>
+        <h3><a href="/artigo/<%= artigo._id %>"><%= artigo.titulo %></a> <small>por <a href="/articles/<%=artigo.autor.id%>"><%=artigo.autor.name%></a></small></h3>
+        <p><small><%= formataData(artigo.criado)%></small></p>
         <p><%= artigo.resumo %></p>
         <hr>
-    <% }); %>
-   
-    <p><a href="#">Mais antigas</a> &#0149; <a href="#">Mais recentes</a></p>
+    <%  
+        conta++;
+           }
+          }
+       }); 
+       %>
+   <p>
+    <%if (parseInt(quantidade) > conta) {%>
+        Mais antigas
+     <%
+        } else {
+            if(!filtro){
+         %>
+            <a href="/articles/paginas/<%=(parseInt(pagina)+1)%>">Mais antigas</a>
+         <%} else {%>
+           <a href="/articles/<%=filtro.id%>/paginas/<%=(parseInt(pagina)+1)%>">Mais antigas</a>
+         <%}%>
+     <%}%>
+     &#0149;
+    <%if (parseInt(pagina) == 0) {%>
+        Mais recentes
+    <%} else {
+          if(!filtro){ %>
+            <a href="/articles/paginas/<%=(parseInt(pagina)-1)%>">Mais recentes</a>
+         <%} else {%>
+           <a href="/articles/<%=filtro.id%>/paginas/<%=(parseInt(pagina)-1)%>">Mais recentes</a>
+         <%}%>
+    <%}%>
+    
 </div>
 <%- include('commons/footer')  %>
